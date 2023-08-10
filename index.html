@@ -1,0 +1,271 @@
+<!doctype html>
+<html>
+  </head>
+    <title>Stellar!</title>
+    <link rel="icon" type="image/svg" href="./images/icon.svg"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&family=Raleway:wght@300&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <style>
+    body{
+      background-color: black;
+      color:white;
+    }
+    .fill { 
+        
+        height: 100%;
+       
+    }
+    h1{
+      font-family: 'Poppins', sans-serif;
+      font-family: 'Raleway', sans-serif;
+      font-size: 28pt;
+    }
+    .nav-link{
+      color: white !important;
+    }
+    .active{
+      color: black !important;
+    }
+    .page{
+      height: 90vh;
+      max-height: 90vh;
+    }
+    input{
+      background-color: #0000 !important;
+      color: white !important;
+      
+    }
+    </style>
+  </head>
+
+  <body>
+    <div class="page">
+    <div id="main" class="fill">
+      <div class="mt-5">
+      </div>
+      <div id="content" style="background-color: black; width:35vw; height:100%;" class="ml-5 mt-5">
+        <div style ="padding-left: 35px;"class="container">
+          <img style="filter:invert(100%);" src="https://assets-global.website-files.com/5deac75ecad2173c2ccccbc7/5dec8960504967fd31147f62_Stellar_lockup_black_RGB.svg" height="35" alt="" class="stellar-logo">
+          <h1>On Metamask!</h1>
+          <hr/>
+          <p>Stellar on Metamask is a non-custodal Wallet, that is securly installed into Metamask, whenever a user attemps to interact with a Stellar Dapp.
+            This will grant 30 Million Metamask-Users access to the Stellar ecosystem.
+          </p>
+          <div id="flask_warning" style="color: #ffc107; padding: 20px; display:none; width: fit-content; border-radius: 0.375rem; border: 1px solid #ffc107;" >
+            This Demo Requires <a href="https://metamask.io/flask/">Metamask Flask</a>
+            <br/>
+            Install it, then Refresh the page
+          </div>
+          <br/>
+          <button id="connectButton" class="connect btn btn-outline-warning"><img width="30" height="30" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/MetaMask_Fox.svg/800px-MetaMask_Fox.svg.png"/>Connect</button>
+          <br>
+          <br>
+          <p style="display: none;" id="info">We are funding your testnet account please wait.</p>
+        </div>
+    <div id="inputs" style="opacity: 0;">
+      <div style="padding-left: 35px;" class="container mt-4">
+      <br/>
+      <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Query Wallet</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Sign Transaction</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false">Project Info</button>
+        </li>
+      </ul>
+      <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+          <br/>
+          <br/>
+          <button class="sendHello btn btn-outline-light">Display Wallet Address</button>
+          <button id="getBalance" class="btn btn-outline-light">Display Wallet Balance</button>
+          <button class="getAccount btn btn-outline-light">Request Account info</button>
+          <br>
+          <br>
+          <h6 style="color:white" id="query_output"></h6>
+        </div>
+        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+          <br/>
+          <br/>
+          <label style="color: white;">recepient address</label>
+          <input class="form-control" style="width:50%" value="GC4FIQFSE66E4HR7D4QCSHKMS6M7LKKYPP72ICY5WYLCEJVHGBZAKQJK" id="recepient"/>
+          <br/>
+          <label style="color: white;">amount</label>
+          <input class="form-control" style="width:30%" type="number" id="amount"/>
+          <br/>
+          <button class="btn btn-outline-light" id="send">send</button>
+        </div>
+        <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
+      </div>
+        
+        <br>
+
+      </div>
+    </div>
+  </div>
+  </div>
+</div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vanta/dist/vanta.waves.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.rings.min.js"></script>
+<script>
+VANTA.RINGS({
+  el: "#main",
+  mouseControls: false,
+  touchControls: false,
+  gyroControls: false,
+  minHeight: 200.00,
+  minWidth: 200.00,
+  scale: 1.00,
+  scaleMobile: 1.00,
+  backgroundColor: 0x0,
+  color: 0x0
+})
+</script>
+  
+  </body>
+
+  <script>
+    function showWarning(){
+      document.getElementById("connectButton").style.display = "none";
+      document.getElementById("flask_warning").style.display = "block";
+    }
+    (async ()=>{
+      if(!window.ethereum){
+        return showWarning()
+      }
+    const isFlask = (
+      await window.ethereum.request({ method: 'web3_clientVersion' })
+    )?.includes('flask');
+    console.log(isFlask);
+    if(!isFlask){
+      return showWarning();
+    }
+    })()
+
+
+    const snapId = `local:${window.location.href}`;
+
+    const connectButton = document.querySelector('button.connect')
+    const sendButton = document.querySelector('button.sendHello')
+    const getAccountButton = document.querySelector('button.getAccount')
+    const sendTxnButton = document.getElementById('send');
+    const balanceButton = document.getElementById('getBalance');
+    const query_output = document.getElementById('query_output');
+
+    connectButton.addEventListener('click', connect)
+    sendButton.addEventListener('click', send)
+    getAccountButton.addEventListener('click', getAccount)
+    sendTxnButton.addEventListener('click', sendTxn)
+    balanceButton.addEventListener('click', getBalance)
+
+    // here we get permissions to interact with and install the snap
+    async function connect () {
+      const result = await ethereum.request({
+        method: 'wallet_requestSnaps',
+        params: {
+          [snapId]: {}
+        },
+      });
+
+      await fund();
+      
+      $("#content").animate({width: "100vw"});
+      $("#inputs").delay(1000).animate({opacity: "100%"});
+    }
+
+    // here we call the snap's "hello" method
+    async function send () {
+      try {
+        const addr = await ethereum.request({
+          method: 'wallet_invokeSnap',
+          params: {snapId:snapId, request:{
+            method: 'getAddress'
+          }}
+        })
+        console.log(addr)
+        query_output.innerText = addr;
+      } catch (err) {
+        console.error(err)
+        alert('Problem happened: ' + err.message || err)
+      }
+    }
+
+    async function getBalance () {
+      console.log("in get balance function");
+      try {
+        const addr = await ethereum.request({
+          method: 'wallet_invokeSnap',
+          params: {snapId:snapId, request:{
+            method: 'getBalance'
+          }}
+        })
+        console.log(addr)
+        query_output.innerText = `${addr} testnet XLM`;
+      } catch (err) {
+        console.error(err)
+        alert('Problem happened: ' + err.message || err)
+      }
+    }
+
+    async function sendTxn(){
+      console.log("send transaction called");
+      const recepient = document.getElementById("recepient").value;
+      const amount = document.getElementById("amount").value;
+      const response = await ethereum.request({
+        method: 'wallet_invokeSnap',
+        params: {snapId:snapId, request:{
+          method: 'transfer',
+          params:{
+            to: recepient,
+            amount: amount
+          }
+        }}
+      })
+      console.log(response);
+    }
+    async function fund () {
+      try {
+        const info = document.getElementById('info');
+        info.style.display = 'block'
+        const addr = await ethereum.request({
+          method: 'wallet_invokeSnap',
+          params: {snapId:snapId, request:{
+            method: 'fund'
+          }}
+        })
+        info.style.display = 'none'
+        console.log(addr);
+      } catch (err) {
+        console.error(err)
+        alert('Problem happened: ' + err.message || err)
+      }
+    }
+    async function getAccount() {
+      try {
+        const addr = await ethereum.request({
+          method: 'wallet_invokeSnap',
+          params: {snapId:snapId, request:{
+            method: 'getAccountInfo'
+          }}
+        })
+        console.log(addr)
+        console.log(addr.balances[0])
+        query_output.innerText = JSON.stringify(addr);
+      } catch (err) {
+        console.error(err)
+        alert('Problem happened: ' + err.message || err)
+      }
+    }
+    
+  </script>
+
+</html>
